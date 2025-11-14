@@ -1,0 +1,2 @@
+C:/Users/xaris/StudioProjects/flutter_firebase_quiz_app/android/app/.cxx/Debug/5w3l44ej/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/xaris/StudioProjects/flutter_firebase_quiz_app/android/app/.cxx/Debug/5w3l44ej/armeabi-v7a/CMakeFiles/rebuild_cache.dir
