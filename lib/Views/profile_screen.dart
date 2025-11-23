@@ -11,7 +11,6 @@ import 'package:flutter_firebase_quiz_app/Widgets/my_button.dart';
 import 'package:flutter_firebase_quiz_app/Widgets/snackbar.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../Data/existing_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

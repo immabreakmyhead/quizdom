@@ -10,22 +10,27 @@ class QuizCategory extends StatefulWidget {
 }
 
 class _QuizCategoryState extends State<QuizCategory> {
+  // Reference to the Firestore collection that contains quiz categories
   final CollectionReference myCollection =
       FirebaseFirestore.instance.collection("QuestionsTest");
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      bottom: false,
+      bottom: false,// Avoids overlapping with bottom system UI
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 8),
         child: StreamBuilder(
+          // Listen to live updates from Firestore
           stream: myCollection.snapshots(),
           builder: (context, snapshot) {
+            // Show loading indicator while waiting for the data
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             }
+
+            // Handle errors, empty data, or missing snapshot
             if (snapshot.hasError ||
                 !snapshot.hasData ||
                 snapshot.data!.docs.isEmpty) {
@@ -33,6 +38,7 @@ class _QuizCategoryState extends State<QuizCategory> {
                 child: Text("No categories found"),
               );
             }
+            // Predefined colors for cards
             final List<Color> colors = [
               Colors.grey,
               Colors.blue,
@@ -43,15 +49,22 @@ class _QuizCategoryState extends State<QuizCategory> {
               Colors.green,
             ];
             return GridView.builder(
+                padding: const EdgeInsets.only(top: 80), //  Adds top spacing
+
+              // Number of category cards
                 itemCount: snapshot.data!.docs.length,
+
+                // Grid layout: 2 columns, spacing between items
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15),
+                    crossAxisSpacing: 1,
+                    mainAxisSpacing: 32,),
                 itemBuilder: (context, index) {
+                  // Get the Firestore document for this category
                   final DocumentSnapshot documentSnapshot =
                       snapshot.data!.docs[index];
                   return GestureDetector(
+                    // Navigate to QuizScreen when tapping a category card
                     onTap: () {
                       Navigator.push(
                         context,
@@ -67,9 +80,12 @@ class _QuizCategoryState extends State<QuizCategory> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
+
+                      // Select card color based on index (looping with modulo)
                       color: colors[index % colors.length],
                       child: Column(
                         children: [
+                          // Rounded image at the top of each card
                           ClipRRect(
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(16),
@@ -81,7 +97,9 @@ class _QuizCategoryState extends State<QuizCategory> {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          const SizedBox(height: 8),
+                          const SizedBox(height: 4),
+
+                          // Category title text
                           Text(
                             documentSnapshot['title'],
                             textAlign: TextAlign.center,

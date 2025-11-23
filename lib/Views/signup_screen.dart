@@ -64,7 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
           padding: const EdgeInsets.all(15),
           child: Column(
             children: [
-              Image.asset("assets/6333204.jpg"),
+              Image.asset("assets/usersignin.png"),
               const SizedBox(height: 20),
               // inpute field for name,
               TextField(

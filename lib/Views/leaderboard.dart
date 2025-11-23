@@ -48,19 +48,18 @@ class Leaderboard extends StatelessWidget {
                     Image.asset(
                       "assets/leaderboard.png",
                       width: double.maxFinite,
-                      height: 450,
+                      height: 350,
                       fit: BoxFit.cover,
                     ),
                     const Positioned(
-                      top: 70,
-                      right: 150,
-                      left: 150,
+                      top: 72,
+                      left: 88,
                       child: Text(
-                        "Leaderboard",
+                        "Leader      board",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 30,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                     ),
