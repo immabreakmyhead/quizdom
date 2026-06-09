@@ -129,14 +129,7 @@ class _QuizCategoryState extends State<QuizCategory> {
 
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => QuizScreen(
-                                  categoryName: documentSnapshot['title'],
-                                ),
-                              ),
-                            );
+                            _showDifficultySelector(context, documentSnapshot['title']);
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -211,6 +204,178 @@ class _QuizCategoryState extends State<QuizCategory> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  void _showDifficultySelector(BuildContext context, String categoryName) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.55),
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          decoration: BoxDecoration(
+            color: AppTheme.surface.withOpacity(0.95),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(28),
+              topRight: Radius.circular(28),
+            ),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.08),
+              width: 1,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 48,
+                height: 5,
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.15),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                "CHOOSE DIFFICULTY",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
+                  color: AppTheme.textLight,
+                  letterSpacing: 1.5,
+                ),
+              ),
+              const SizedBox(height: 24),
+              _buildDifficultyOption(
+                context,
+                categoryName,
+                "Easy",
+                "Relaxed pace, perfect for learning.",
+                "50 pts / question",
+                "No Time Limit",
+                const [Color(0xFF10B981), Color(0xFF059669)],
+              ),
+              const SizedBox(height: 16),
+              _buildDifficultyOption(
+                context,
+                categoryName,
+                "Medium",
+                "Balanced speed and challenge.",
+                "100 pts / question",
+                "15 Seconds",
+                const [Color(0xFF6366F1), Color(0xFF4F46E5)],
+              ),
+              const SizedBox(height: 16),
+              _buildDifficultyOption(
+                context,
+                categoryName,
+                "Hard",
+                "Intense speed, maximum reward.",
+                "200 pts / question",
+                "10 Seconds",
+                const [Color(0xFFEF4444), Color(0xFFDC2626)],
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildDifficultyOption(
+    BuildContext context,
+    String categoryName,
+    String title,
+    String subtitle,
+    String points,
+    String timeLimit,
+    List<Color> gradientColors,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuizScreen(
+              categoryName: categoryName,
+              difficulty: title.toLowerCase(),
+            ),
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.02),
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: Colors.white.withOpacity(0.06),
+            width: 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 12,
+              height: 12,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: gradientColors,
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: AppTheme.textLight,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: AppTheme.textMuted,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  points,
+                  style: TextStyle(
+                    fontSize: 13,
+                    fontWeight: FontWeight.bold,
+                    color: gradientColors[0],
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  timeLimit,
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: AppTheme.textMuted,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

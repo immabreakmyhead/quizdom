@@ -8,12 +8,16 @@ import 'package:lottie/lottie.dart';
 
 class ResultScreen extends StatefulWidget {
   final int score;
+  final int correctAnswers;
   final int totalQuestion;
+  final String difficulty;
 
   const ResultScreen({
     super.key,
     required this.score,
+    required this.correctAnswers,
     required this.totalQuestion,
+    required this.difficulty,
   });
 
   @override
@@ -30,7 +34,7 @@ class _ResultScreenState extends State<ResultScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double percentage = (widget.score / widget.totalQuestion) * 100;
+    double percentage = (widget.correctAnswers / widget.totalQuestion) * 100;
 
     String statusTitle;
     String statusSubtitle;
@@ -161,11 +165,20 @@ class _ResultScreenState extends State<ResultScreen> {
                       const SizedBox(height: 24),
 
                       Text(
-                        "${widget.score} / ${widget.totalQuestion} Correct",
+                        "${widget.correctAnswers} / ${widget.totalQuestion} Correct",
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: AppTheme.textLight,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        "+${widget.score} Points (${widget.difficulty.toUpperCase()})",
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.primary,
                         ),
                       ),
                     ],

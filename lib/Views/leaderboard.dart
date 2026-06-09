@@ -178,7 +178,7 @@ class Leaderboard extends StatelessWidget {
         podiumGradient = [const Color(0xFFD97706), const Color(0xFF78350F)];
     }
 
-    final int displayScore = (user['score'] ?? 0) * 100;
+    final int displayScore = user['score'] ?? 0;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -313,7 +313,7 @@ class Leaderboard extends StatelessWidget {
   }
 
   Widget _buildListRow(Map<String, dynamic> user, int rank, BuildContext context) {
-    final int displayScore = (user['score'] ?? 0) * 100;
+    final int displayScore = user['score'] ?? 0;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -335,7 +335,7 @@ class Leaderboard extends StatelessWidget {
           Container(
             width: 32,
             height: 32,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppTheme.cardBg,
               shape: BoxShape.circle,
             ),

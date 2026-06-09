@@ -280,12 +280,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Widget _buildStatsGrid() {
-    final int rawScore = userData?['score'] ?? 0;
-    final int displayScore = rawScore * 100;
-    final int level = (rawScore / 5).floor() + 1;
-    final String rank = rawScore > 50
+    final int totalPoints = userData?['score'] ?? 0;
+    final int level = (totalPoints / 500).floor() + 1;
+    final String rank = totalPoints > 5000
         ? "Grandmaster"
-        : rawScore > 20
+        : totalPoints > 2000
             ? "Pro Builder"
             : "Quiz Novice";
 
@@ -299,7 +298,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         _buildStatCard(
           title: "Total Points",
-          value: "$displayScore",
+          value: "$totalPoints",
           icon: Icons.emoji_events_rounded,
           color: Colors.amber,
         ),
@@ -316,9 +315,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           color: Colors.purpleAccent,
         ),
         _buildStatCard(
-          title: "Correct Answers",
-          value: "$rawScore",
-          icon: Icons.check_circle_rounded,
+          title: "Status",
+          value: "Elite Player",
+          icon: Icons.workspace_premium_rounded,
           color: AppTheme.correct,
         ),
       ],

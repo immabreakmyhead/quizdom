@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,7 +11,12 @@ import 'package:flutter_firebase_quiz_app/Service/audio_service.dart';
 
 class QuizScreen extends StatefulWidget {
   final String categoryName;
-  const QuizScreen({super.key, required this.categoryName});
+  final String difficulty;
+  const QuizScreen({
+    super.key,
+    required this.categoryName,
+    required this.difficulty,
+  });
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -19,13 +25,58 @@ class QuizScreen extends StatefulWidget {
 class _QuizScreenState extends State<QuizScreen> {
   List<Map<String, dynamic>> question = [];
   int currentIndex = 0, score = 0;
+  int _correctAnswers = 0;
   int? selectedOption;
   bool hasAnswered = false, isLoading = true;
+  Timer? _timer;
+  int _timeLeft = 0;
+  int _maxTime = 0;
 
   @override
   void initState() {
-    _fetchQuestions();
     super.initState();
+    if (widget.difficulty == 'medium') {
+      _maxTime = 15;
+    } else if (widget.difficulty == 'hard') {
+      _maxTime = 10;
+    } else {
+      _maxTime = 0;
+    }
+    _fetchQuestions();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _startTimer() {
+    _timer?.cancel();
+    if (_maxTime == 0) return;
+
+    setState(() {
+      _timeLeft = _maxTime;
+    });
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_timeLeft > 1) {
+        setState(() {
+          _timeLeft--;
+        });
+      } else {
+        _timer?.cancel();
+        _handleTimeOut();
+      }
+    });
+  }
+
+  void _handleTimeOut() {
+    setState(() {
+      hasAnswered = true;
+      selectedOption = -1;
+    });
+    AudioService.playIncorrect();
   }
 
   Future<void> _fetchQuestions() async {
@@ -41,7 +92,10 @@ class _QuizScreenState extends State<QuizScreen> {
           var questionMap = data['questions'];
 
           if (questionMap is Map<String, dynamic>) {
-            var fetchedQuestions = questionMap.entries.map((entry) {
+            var fetchedQuestions = questionMap.entries.where((entry) {
+              var q = entry.value;
+              return q['difficulty'] == widget.difficulty;
+            }).map((entry) {
               var q = entry.value;
               var optionsMap = q['options'] as Map<String, dynamic>;
               var optionList = optionsMap.entries.toList()
@@ -60,10 +114,13 @@ class _QuizScreenState extends State<QuizScreen> {
             }).toList();
 
             fetchedQuestions.shuffle(Random());
-            if (fetchedQuestions.length > 20) {
-              fetchedQuestions = fetchedQuestions.sublist(0, 20);
+            if (fetchedQuestions.length > 10) {
+              fetchedQuestions = fetchedQuestions.sublist(0, 10);
             }
-            setState(() => question = fetchedQuestions);
+            setState(() {
+              question = fetchedQuestions;
+            });
+            _startTimer();
           }
         }
       }
@@ -77,12 +134,20 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   void _checkAnswer(int index) {
+    _timer?.cancel();
     final bool isCorrect = question[currentIndex]['correctOptionKey'] == index + 1;
     setState(() {
       hasAnswered = true;
       selectedOption = index;
       if (isCorrect) {
-        score++;
+        _correctAnswers++;
+        int pointsAwarded = 50;
+        if (widget.difficulty == 'medium') {
+          pointsAwarded = 100;
+        } else if (widget.difficulty == 'hard') {
+          pointsAwarded = 200;
+        }
+        score += pointsAwarded;
       }
     });
 
@@ -100,6 +165,7 @@ class _QuizScreenState extends State<QuizScreen> {
         hasAnswered = false;
         selectedOption = null;
       });
+      _startTimer();
     } else {
       await _updateUserScore();
       if (!mounted) return;
@@ -108,7 +174,9 @@ class _QuizScreenState extends State<QuizScreen> {
         MaterialPageRoute(
           builder: (context) => ResultScreen(
             score: score,
+            correctAnswers: _correctAnswers,
             totalQuestion: question.length,
+            difficulty: widget.difficulty,
           ),
         ),
       );
@@ -135,9 +203,9 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return Scaffold(
+      return const Scaffold(
         backgroundColor: AppTheme.background,
-        body: const Center(
+        body: Center(
           child: CircularProgressIndicator(color: AppTheme.primary),
         ),
       );
@@ -200,6 +268,46 @@ class _QuizScreenState extends State<QuizScreen> {
                     );
                   },
                 ),
+                if (_maxTime > 0) ...[
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
+                            color: _timeLeft <= 3 ? AppTheme.incorrect : AppTheme.primary,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            "Time Left: ${_timeLeft}s",
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: _timeLeft <= 3 ? AppTheme.incorrect : AppTheme.textLight,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4),
+                            child: LinearProgressIndicator(
+                              value: _timeLeft / _maxTime,
+                              backgroundColor: Colors.white.withOpacity(0.05),
+                              color: _timeLeft <= 3 ? AppTheme.incorrect : AppTheme.primary,
+                              minHeight: 6,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 30),
 
                 Container(
