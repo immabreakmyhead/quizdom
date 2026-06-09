@@ -15,732 +15,349 @@ Future<void> uploadQuestionsForAField(String field, dynamic data) async {
 }
 
 final data = {
-  "Flutter": {
-    "title": "Flutter",
-    "image_url":
-        "https://litslink.com/wp-content/uploads/2020/03/flutter-app-featured.png",
+  "Countries & Capitals": {
+    "title": "Countries & Capitals",
+    "image_url": "https://img.freepik.com/free-vector/world-map-concept-illustration_114360-1506.jpg",
     "questions": {
       "0": {
-        "correctOptionKey": "1",
-        "options": {"1": "number", "2": "int", "3": "String", "4": "bool"},
-        "questionText": "Which of the following is NOT a valid Dart data type?"
+        "correctOptionKey": "2",
+        "options": {"1": "Milan", "2": "Rome", "3": "Venice", "4": "Florence"},
+        "questionText": "What is the capital of Italy?"
       },
       "1": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Widget build()",
-          "2": "super.build()",
-          "3": "Widget build(BuildContext context)",
-          "4": "@override Widget build()"
-        },
-        "questionText":
-            "Which is NOT a valid build method signature in Flutter?"
+        "correctOptionKey": "1",
+        "options": {"1": "Canberra", "2": "Sydney", "3": "Melbourne", "4": "Perth"},
+        "questionText": "What is the capital of Australia?"
       },
       "2": {
         "correctOptionKey": "3",
-        "options": {
-          "1": "pubspec.yaml",
-          "2": "Analysis_options.yaml",
-          "3": "Dartpad.yaml",
-          "4": "build.gradle"
-        },
-        "questionText": "Which file is NOT typically part of a Flutter project?"
+        "options": {"1": "Brazil", "2": "Argentina", "3": "Chile", "4": "Peru"},
+        "questionText": "Which country has Santiago as its capital?"
       },
       "3": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "StatefulWidget",
-          "2": "ImmutableWidget",
-          "3": "StatelessWidget",
-          "4": "InheritedWidget"
-        },
-        "questionText": "Which widget type does NOT exist in Flutter?"
+        "correctOptionKey": "1",
+        "options": {"1": "Tokyo", "2": "Osaka", "3": "Kyoto", "4": "Hiroshima"},
+        "questionText": "What is the capital of Japan?"
       },
       "4": {
         "correctOptionKey": "4",
-        "options": {"1": "async", "2": "await", "3": "Future", "4": "parallel"},
-        "questionText":
-            "Which keyword is NOT used for Dart asynchronous programming?"
+        "options": {"1": "Berlin", "2": "Hamburg", "3": "Munich", "4": "Paris"},
+        "questionText": "What is the capital of France?"
       },
       "5": {
-        "correctOptionKey": "3",
-        "options": {"1": "const", "2": "final", "3": "static", "4": "var"},
-        "questionText":
-            "Which keyword is NOT used for variable immutability in Dart?"
+        "correctOptionKey": "2",
+        "options": {"1": "Toronto", "2": "Ottawa", "3": "Vancouver", "4": "Montreal"},
+        "questionText": "What is the capital of Canada?"
       },
       "6": {
         "correctOptionKey": "1",
-        "options": {
-          "1": "context.push()",
-          "2": "Navigator.push()",
-          "3": "Navigator.pop()",
-          "4": "Router.of(context).push()"
-        },
-        "questionText": "Which is NOT a valid navigation method in Flutter?"
+        "options": {"1": "Beijing", "2": "Shanghai", "3": "Hong Kong", "4": "Guangzhou"},
+        "questionText": "What is the capital of China?"
       },
       "7": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Hot Restart",
-          "2": "Hot Reload",
-          "3": "Debug Paint",
-          "4": "Cold Refresh"
-        },
-        "questionText": "Which development feature does NOT exist in Flutter?"
+        "correctOptionKey": "3",
+        "options": {"1": "Lisbon", "2": "Madrid", "3": "Berlin", "4": "Rome"},
+        "questionText": "What is the capital of Germany?"
       },
       "8": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "MaterialApp",
-          "2": "CupertinoScaffold",
-          "3": "Scaffold",
-          "4": "WidgetsApp"
-        },
-        "questionText": "Which root widget does NOT exist in Flutter?"
+        "correctOptionKey": "4",
+        "options": {"1": "Cairo", "2": "Alexandria", "3": "Giza", "4": "Khartoum"},
+        "questionText": "What is the capital of Sudan?"
       },
       "9": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "BuildContext",
-          "2": "Key",
-          "3": "WidgetTree",
-          "4": "AnimationController"
-        },
-        "questionText": "Which is NOT a built-in Flutter/Dart type?"
-      },
-      "10": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "initState()",
-          "2": "dispose()",
-          "3": "didChangeDependencies()",
-          "4": "rebuild()"
-        },
-        "questionText": "Which method is NOT part of the State lifecycle?"
-      },
-      "11": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Flutter uses JavaScript bridge",
-          "2": "Flutter apps compile to native code",
-          "3": "Skia is the rendering engine",
-          "4": "Dart is AOT compiled"
-        },
-        "questionText": "Which statement about Flutter architecture is FALSE?"
-      },
-      "12": {
-        "correctOptionKey": "3",
-        "options": {"1": "??", "2": "??=", "3": "?:", "4": "?"},
-        "questionText": "Which null-aware operator does NOT exist in Dart?"
-      },
-      "13": {
         "correctOptionKey": "2",
-        "options": {
-          "1": "Expanded",
-          "2": "ExpandedView",
-          "3": "Flexible",
-          "4": "Spacer"
-        },
-        "questionText":
-            "Which widget is NOT related to flexible layouts in Flutter?"
-      },
-      "14": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "ListView.builder",
-          "2": "ListView.separated",
-          "3": "ListView.custom",
-          "4": "ListView.array"
-        },
-        "questionText": "Which ListView constructor does NOT exist?"
-      },
-      "15": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "mixins",
-          "2": "extensions",
-          "3": "enums",
-          "4": "sealed classes"
-        },
-        "questionText": "Which Dart feature was introduced in Dart 3?"
-      },
-      "16": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Provider",
-          "2": "Riverpod",
-          "3": "Redux",
-          "4": "Bloc"
-        },
-        "questionText":
-            "Which state management solution is NOT officially recommended by Flutter?"
-      },
-      "17": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Theme.of(context)",
-          "2": "Context.theme()",
-          "3": "MediaQuery.of(context)",
-          "4": "Navigator.of(context)"
-        },
-        "questionText": "Which context method does NOT exist?"
-      },
-      "18": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "dart:core",
-          "2": "dart:async",
-          "3": "dart:ui",
-          "4": "dart:widgets"
-        },
-        "questionText": "Which core Dart library does NOT exist?"
-      },
-      "19": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "required",
-          "2": "late",
-          "3": "optional",
-          "4": "static"
-        },
-        "questionText":
-            "Which keyword is NOT used for variable declarations in Dart?"
+        "options": {"1": "Bangkok", "2": "Hanoi", "3": "Jakarta", "4": "Kuala Lumpur"},
+        "questionText": "What is the capital of Vietnam?"
       }
     }
   },
-  "AI and machine learning": {
-    "title": "AI and machine learning",
-    "image_url":
-        "https://img.freepik.com/premium-vector/artificial-intelligence-illustration-ai-creative-design-vector-illustration_541075-747.jpg",
+
+  "Famous Landmarks": {
+    "title": "Famous Landmarks",
+    "image_url": "https://img.freepik.com/free-vector/world-landmarks-concept_23-2147769298.jpg",
     "questions": {
       "0": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Artificially Intelligent Machine",
-          "2": "Artificial Intelligence",
-          "3": "Automated Intelligence",
-          "4": "Advanced Intelligence"
-        },
-        "questionText": "What does AI stand for?"
-      },
-      "1": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Random Forest",
-          "2": "Support Vector Machine",
-          "3": "K-Means Clustering",
-          "4": "Logistic Regression"
-        },
-        "questionText":
-            "Which of the following is an unsupervised learning algorithm?"
-      },
-      "2": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Labeled data",
-          "2": "Unlabeled data",
-          "3": "Partially labeled data",
-          "4": "No data at all"
-        },
-        "questionText": "Supervised learning requires which type of data?"
-      },
-      "3": {
         "correctOptionKey": "4",
-        "options": {
-          "1": "Algorithm Training",
-          "2": "Neural Mapping",
-          "3": "Backward Learning",
-          "4": "Backpropagation"
-        },
-        "questionText":
-            "What is the name of the algorithm used to adjust weights in a neural network during training?"
-      },
-      "4": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Supervised Learning",
-          "2": "Reinforcement Learning",
-          "3": "Unsupervised Learning",
-          "4": "Self-Learning"
-        },
-        "questionText":
-            "Which type of learning involves an agent interacting with an environment to maximize rewards?"
-      },
-      "5": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Mean Square Loss",
-          "2": "Binary Loss",
-          "3": "Loss Function",
-          "4": "Cost Aggregator"
-        },
-        "questionText":
-            "In machine learning, what is used to measure the difference between actual and predicted values?"
-      },
-      "6": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Perceptron",
-          "2": "ReLU",
-          "3": "Sigmoid",
-          "4": "Linear Unit"
-        },
-        "questionText":
-            "What is the simplest type of artificial neural network called?"
-      },
-      "7": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Overfitting",
-          "2": "Underfitting",
-          "3": "Bias",
-          "4": "All of the above"
-        },
-        "questionText":
-            "Which of the following are common problems in machine learning models?"
-      },
-      "8": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Flattening",
-          "2": "Feature Extraction",
-          "3": "Weight Calculation",
-          "4": "Batch Normalization"
-        },
-        "questionText":
-            "What is the process of selecting relevant input variables for a machine learning model?"
-      },
-      "9": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Gradient Rise",
-          "2": "Activation Learning",
-          "3": "Gradient Descent",
-          "4": "Weight Optimization"
-        },
-        "questionText":
-            "Which optimization algorithm is commonly used to minimize the loss function in deep learning?"
-      },
-      "10": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "TensorFlow",
-          "2": "NumPy",
-          "3": "Matplotlib",
-          "4": "Pandas"
-        },
-        "questionText":
-            "Which of these is a popular deep learning framework developed by Google?"
-      },
-      "11": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Precision",
-          "2": "Accuracy",
-          "3": "Recall",
-          "4": "Specificity"
-        },
-        "questionText":
-            "Which metric measures the overall correctness of a machine learning model?"
-      },
-      "12": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Dropout",
-          "2": "Batch Size",
-          "3": "Epoch",
-          "4": "Learning Rate"
-        },
-        "questionText":
-            "In deep learning, what term refers to one complete pass through the training dataset?"
-      },
-      "13": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Text Processing",
-          "2": "Deep Learning",
-          "3": "Data Augmentation",
-          "4": "Natural Language Processing"
-        },
-        "questionText": "What does NLP stand for in the context of AI?"
-      },
-      "14": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Supervised Learning",
-          "2": "Unsupervised Learning",
-          "3": "Transfer Learning",
-          "4": "Backpropagation"
-        },
-        "questionText": "Which type of learning does not require labeled data?"
-      },
-      "15": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "K-Nearest Neighbors",
-          "2": "Decision Tree",
-          "3": "Random Forest",
-          "4": "Neural Network"
-        },
-        "questionText":
-            "Which algorithm classifies a data point based on its proximity to labeled examples?"
-      },
-      "16": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Bias",
-          "2": "Feature Importance",
-          "3": "Variance",
-          "4": "Both Bias and Variance"
-        },
-        "questionText": "What does the bias-variance tradeoff aim to balance?"
-      },
-      "17": {
-        "correctOptionKey": "3",
-        "options": {"1": "YOLO", "2": "RCNN", "3": "CNN", "4": "ResNet"},
-        "questionText":
-            "Which deep learning model is widely used for image recognition tasks?"
-      },
-      "18": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Turing Test",
-          "2": "AI Evaluation",
-          "3": "Neural Examination",
-          "4": "Algorithm Efficiency Test"
-        },
-        "questionText":
-            "What test is used to determine if a machine exhibits human-like intelligence?"
-      },
-      "19": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Algorithm Set",
-          "2": "Neural Network",
-          "3": "Data Matrix",
-          "4": "Feature Space"
-        },
-        "questionText":
-            "What is a network of artificial neurons modeled after the human brain called?"
-      }
-    },
-  },
-  "Science": {
-    "title": "Science",
-    "image_url":
-        "https://img.freepik.com/free-vector/flat-biotechnology-concept-illustration_23-2148892456.jpg",
-    "questions": {
-      "0": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Oxygen",
-          "2": "Carbon Dioxide",
-          "3": "Nitrogen",
-          "4": "Argon"
-        },
-        "questionText": "Which gas makes up the majority of Earth's atmosphere?"
+        "options": {"1": "Rome", "2": "Athens", "3": "Istanbul", "4": "Paris"},
+        "questionText": "In which city is the Eiffel Tower located?"
       },
       "1": {
         "correctOptionKey": "2",
-        "options": {
-          "1": "Proton",
-          "2": "Electron",
-          "3": "Neutron",
-          "4": "Photon"
-        },
-        "questionText": "Which subatomic particle has a negative charge?"
+        "options": {"1": "India", "2": "China", "3": "Japan", "4": "Mongolia"},
+        "questionText": "The Great Wall is located in which country?"
       },
       "2": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Photosynthesis",
-          "2": "Respiration",
-          "3": "Transpiration",
-          "4": "Chemosynthesis"
-        },
-        "questionText":
-            "Which process do plants use to convert sunlight into energy?"
+        "correctOptionKey": "3",
+        "options": {"1": "Paris", "2": "Rome", "3": "Sydney", "4": "London"},
+        "questionText": "Where is the Sydney Opera House located?"
       },
       "3": {
         "correctOptionKey": "1",
-        "options": {"1": "Newton", "2": "Joule", "3": "Watt", "4": "Pascal"},
-        "questionText": "What is the SI unit of force?"
+        "options": {"1": "Agra", "2": "Mumbai", "3": "New Delhi", "4": "Jaipur"},
+        "questionText": "Where is the Taj Mahal located?"
       },
       "4": {
-        "correctOptionKey": "3",
-        "options": {"1": "Mars", "2": "Venus", "3": "Mercury", "4": "Saturn"},
-        "questionText": "Which planet is closest to the Sun?"
+        "correctOptionKey": "4",
+        "options": {"1": "Mexico City", "2": "Bogotá", "3": "Buenos Aires", "4": "Machu Picchu"},
+        "questionText": "Where is Machu Picchu located?"
       },
       "5": {
         "correctOptionKey": "2",
-        "options": {"1": "H2O", "2": "CO2", "3": "O2", "4": "CH4"},
-        "questionText":
-            "Which molecule is primarily responsible for global warming?"
+        "options": {"1": "Athens", "2": "Rome", "3": "Paris", "4": "Istanbul"},
+        "questionText": "Where is the Colosseum located?"
       },
       "6": {
-        "correctOptionKey": "4",
-        "options": {"1": "Liver", "2": "Heart", "3": "Lungs", "4": "Skin"},
-        "questionText": "Which is the largest organ in the human body?"
+        "correctOptionKey": "1",
+        "options": {"1": "Cairo", "2": "Casablanca", "3": "Alexandria", "4": "Lagos"},
+        "questionText": "Where is the Great Pyramid of Giza located?"
       },
       "7": {
-        "correctOptionKey": "1",
-        "options": {"1": "Solid", "2": "Liquid", "3": "Gas", "4": "Plasma"},
-        "questionText":
-            "What is the most common state of matter in the universe?"
+        "correctOptionKey": "3",
+        "options": {"1": "London", "2": "Paris", "3": "Stonehenge", "4": "Berlin"},
+        "questionText": "Where is Stonehenge located?"
       },
       "8": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Hydrogen",
-          "2": "Helium",
-          "3": "Carbon",
-          "4": "Oxygen"
-        },
-        "questionText": "Which element is the basis of organic chemistry?"
+        "correctOptionKey": "4",
+        "options": {"1": "Tokyo", "2": "Seoul", "3": "Beijing", "4": "Angkor Wat"},
+        "questionText": "Where is Angkor Wat located?"
       },
       "9": {
         "correctOptionKey": "2",
-        "options": {
-          "1": "Mitosis",
-          "2": "Meiosis",
-          "3": "Fission",
-          "4": "Budding"
-        },
-        "questionText":
-            "Which process is responsible for the formation of gametes?"
-      },
-      "10": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Gravity",
-          "2": "Electromagnetism",
-          "3": "Strong Nuclear Force",
-          "4": "Friction"
-        },
-        "questionText":
-            "Which of the following is NOT a fundamental force of nature?"
-      },
-      "11": {
-        "correctOptionKey": "1",
-        "options": {"1": "DNA", "2": "RNA", "3": "Protein", "4": "Lipid"},
-        "questionText":
-            "Which molecule carries genetic information in living organisms?"
-      },
-      "12": {
-        "correctOptionKey": "3",
-        "options": {"1": "Mars", "2": "Jupiter", "3": "Saturn", "4": "Uranus"},
-        "questionText": "Which planet has the most prominent ring system?"
-      },
-      "13": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Chlorine",
-          "2": "Sodium",
-          "3": "Potassium",
-          "4": "Calcium"
-        },
-        "questionText": "Which element is a key component of table salt?"
-      },
-      "14": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Conduction",
-          "2": "Convection",
-          "3": "Radiation",
-          "4": "Insulation"
-        },
-        "questionText":
-            "Which of the following is NOT a method of heat transfer?"
-      },
-      "15": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Photosynthesis",
-          "2": "Respiration",
-          "3": "Fermentation",
-          "4": "Digestion"
-        },
-        "questionText": "Which process releases oxygen into the atmosphere?"
-      },
-      "16": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Neutron Star",
-          "2": "Black Hole",
-          "3": "Red Giant",
-          "4": "White Dwarf"
-        },
-        "questionText": "What is the final stage of a star like the Sun?"
-      },
-      "17": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Acceleration",
-          "2": "Inertia",
-          "3": "Velocity",
-          "4": "Momentum"
-        },
-        "questionText":
-            "Which property of matter is described by Newton's First Law of Motion?"
-      },
-      "18": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Hydrogen",
-          "2": "Helium",
-          "3": "Lithium",
-          "4": "Iron"
-        },
-        "questionText":
-            "Which element is the heaviest produced in regular stellar fusion?"
-      },
-      "19": {
-        "correctOptionKey": "1",
-        "options": {
-          "1": "Celsius",
-          "2": "Fahrenheit",
-          "3": "Kelvin",
-          "4": "Rankine"
-        },
-        "questionText":
-            "Which temperature scale is based on the boiling and freezing points of water?"
-      },
-      "20": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Mitochondria",
-          "2": "Nucleus",
-          "3": "Ribosome",
-          "4": "Golgi Apparatus"
-        },
-        "questionText": "Which organelle is responsible for protein synthesis?"
-      },
-      "21": {
-        "correctOptionKey": "2",
-        "options": {"1": "Earth", "2": "Venus", "3": "Mars", "4": "Mercury"},
-        "questionText":
-            "Which planet is known as Earth's 'sister planet' due to its similar size and composition?"
-      },
-      "22": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Chlorophyll",
-          "2": "Hemoglobin",
-          "3": "Melanin",
-          "4": "Keratin"
-        },
-        "questionText":
-            "Which pigment is responsible for the green color in plants?"
-      },
-      "23": {
-        "correctOptionKey": "1",
-        "options": {"1": "Pascal", "2": "Newton", "3": "Joule", "4": "Watt"},
-        "questionText": "What is the SI unit of pressure?"
-      },
-      "24": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Ozone Layer",
-          "2": "Ionosphere",
-          "3": "Troposphere",
-          "4": "Stratosphere"
-        },
-        "questionText":
-            "Which layer of the atmosphere is closest to Earth's surface?"
-      },
-      "25": {
-        "correctOptionKey": "2",
-        "options": {
-          "1": "Hydrogen",
-          "2": "Helium",
-          "3": "Oxygen",
-          "4": "Nitrogen"
-        },
-        "questionText":
-            "Which element is the second most abundant in the universe?"
-      },
-      "26": {
-        "correctOptionKey": "4",
-        "options": {
-          "1": "Fossil Fuels",
-          "2": "Solar Energy",
-          "3": "Wind Energy",
-          "4": "Nuclear Fusion"
-        },
-        "questionText": "Which energy source is NOT renewable?"
-      },
-      "27": {
-        "correctOptionKey": "1",
-        "options": {"1": "Ampere", "2": "Volt", "3": "Ohm", "4": "Watt"},
-        "questionText": "What is the SI unit of electric current?"
-      },
-      "28": {
-        "correctOptionKey": "3",
-        "options": {
-          "1": "Cytoplasm",
-          "2": "Nucleus",
-          "3": "Cell Wall",
-          "4": "Cell Membrane"
-        },
-        "questionText": "Which structure is NOT found in animal cells?"
-      },
-      "29": {
-        "correctOptionKey": "2",
-        "options": {"1": "Mars", "2": "Jupiter", "3": "Saturn", "4": "Neptune"},
-        "questionText": "Which planet has the Great Red Spot?"
+        "options": {"1": "Cairo", "2": "Petra", "3": "Damascus", "4": "Jerusalem"},
+        "questionText": "Where is the ancient city of Petra located?"
       }
     }
   },
-  "History": {
-    "title": "History",
-    "image_url":
-        "https://thumbs.dreamstime.com/b/history-flat-concept-vector-illustration-history-flat-concept-vector-illustration-school-subject-historical-book-humanities-188954901.jpg",
-  },
-  "Sports": {
-    "title": "Sports",
-    "image_url":
-        "https://www.agoodson.com/wp-content/uploads/2022/05/AndyPotts_Styles_Sports.jpeg",
-  },
-  "Technology": {
-    "title": "Technology",
-    "image_url":
-        "https://img.freepik.com/free-vector/illustration-social-media-concept_53876-18383.jpg",
-  },
-  "Geography": {
-    "title": "Geography",
-    "image_url":
-        "https://img.freepik.com/free-vector/geography-teacher-explaining-lesson-pupil-woman-with-pointer-girl-planet-model-flat-illustration_74855-10671.jpg?semt=ais_hybrid",
+
+  "Flags of the World": {
+    "title": "Flags of the World",
+    "image_url": "https://img.freepik.com/free-vector/world-flags-concept_23-2147771553.jpg",
     "questions": {
       "0": {
+        "correctOptionKey": "1",
+        "options": {"1": "Japan", "2": "South Korea", "3": "China", "4": "Vietnam"},
+        "questionText": "Which country has a red circle on a white background?"
+      },
+      "1": {
         "correctOptionKey": "3",
-        "options": {
-          "1": "Asia",
-          "2": "Africa",
-          "3": "Antarctica",
-          "4": "Europe"
-        },
+        "options": {"1": "France", "2": "Netherlands", "3": "Russia", "4": "Croatia"},
+        "questionText": "Which country's flag has white, blue, and red horizontal stripes?"
+      },
+      "2": {
+        "correctOptionKey": "2",
+        "options": {"1": "USA", "2": "Germany", "3": "Italy", "4": "Belgium"},
+        "questionText": "Which country's flag has black, red, and yellow horizontal stripes?"
+      },
+      "3": {
+        "correctOptionKey": "4",
+        "options": {"1": "Norway", "2": "Finland", "3": "Denmark", "4": "Switzerland"},
+        "questionText": "Which country's flag has a white cross on a red square background?"
+      },
+      "4": {
+        "correctOptionKey": "3",
+        "options": {"1": "India", "2": "Pakistan", "3": "Bangladesh", "4": "Sri Lanka"},
+        "questionText": "Which country has a green flag with a red circle in the middle?"
+      },
+      "5": {
+        "correctOptionKey": "2",
+        "options": {"1": "UK", "2": "Australia", "3": "New Zealand", "4": "Canada"},
+        "questionText": "Which country has the Union Jack in the top left corner of its flag?"
+      },
+      "6": {
+        "correctOptionKey": "1",
+        "options": {"1": "South Africa", "2": "Kenya", "3": "Nigeria", "4": "Egypt"},
+        "questionText": "Which country's flag has six colors forming a Y-shape?"
+      },
+      "7": {
+        "correctOptionKey": "4",
+        "options": {"1": "Sweden", "2": "Norway", "3": "Finland", "4": "Iceland"},
+        "questionText": "Which Nordic country has a white cross on a blue background?"
+      },
+      "8": {
+        "correctOptionKey": "3",
+        "options": {"1": "Argentina", "2": "Chile", "3": "Uruguay", "4": "Paraguay"},
+        "questionText": "Which country has a white sun on a blue and white striped flag?"
+      },
+      "9": {
+        "correctOptionKey": "2",
+        "options": {"1": "Mexico", "2": "Italy", "3": "France", "4": "Spain"},
+        "questionText": "Which country has a vertical tricolor of green, white, and red?"
+      }
+    }
+  },
+
+  "Continents & Oceans": {
+    "title": "Continents & Oceans",
+    "image_url": "https://img.freepik.com/free-vector/earth-geography-concept_23-2148891757.jpg",
+    "questions": {
+      "0": {
+        "correctOptionKey": "4",
+        "options": {"1": "Atlantic", "2": "Indian", "3": "Arctic", "4": "Pacific"},
+        "questionText": "Which is the largest ocean on Earth?"
+      },
+      "1": {
+        "correctOptionKey": "2",
+        "options": {"1": "Africa", "2": "Asia", "3": "Europe", "4": "South America"},
+        "questionText": "Which is the largest continent by area?"
+      },
+      "2": {
+        "correctOptionKey": "3",
+        "options": {"1": "Europe", "2": "Africa", "3": "Antarctica", "4": "Asia"},
         "questionText": "Which continent is the least populated?"
       },
-      "1": {
+      "3": {
+        "correctOptionKey": "1",
+        "options": {"1": "Atlantic", "2": "Indian", "3": "Southern", "4": "Arctic"},
+        "questionText": "Which ocean is the second largest by surface area?"
+      },
+      "4": {
         "correctOptionKey": "2",
-        "options": {
-          "1": "Nile",
-          "2": "Amazon",
-          "3": "Yangtze",
-          "4": "Mississippi"
-        },
-        "questionText": "Which river is the longest in the world?"
+        "options": {"1": "Australia", "2": "Europe", "3": "South America", "4": "Africa"},
+        "questionText": "Which continent has the highest number of countries?"
+      },
+      "5": {
+        "correctOptionKey": "3",
+        "options": {"1": "Pacific", "2": "Atlantic", "3": "Indian", "4": "Arctic"},
+        "questionText": "Which ocean is mainly located between Africa, Asia, and Australia?"
+      },
+      "6": {
+        "correctOptionKey": "4",
+        "options": {"1": "Asia", "2": "Europe", "3": "Africa", "4": "South America"},
+        "questionText": "Which continent is famous for the Amazon rainforest?"
+      },
+      "7": {
+        "correctOptionKey": "1",
+        "options": {"1": "Atlantic", "2": "Pacific", "3": "Indian", "4": "Southern"},
+        "questionText": "Which ocean borders both Africa and Europe?"
+      },
+      "8": {
+        "correctOptionKey": "2",
+        "options": {"1": "Africa", "2": "Asia", "3": "Europe", "4": "North America"},
+        "questionText": "Which continent is home to the Himalayas?"
+      },
+      "9": {
+        "correctOptionKey": "3",
+        "options": {"1": "Pacific", "2": "Atlantic", "3": "Southern", "4": "Arctic"},
+        "questionText": "Which ocean surrounds Antarctica?"
+      }
+    }
+  },
+
+  "Cultures & Traditions": {
+    "title": "Cultures & Traditions",
+    "image_url": "https://img.freepik.com/free-vector/cultural-diversity-concept_23-2148539419.jpg",
+    "questions": {
+      "0": {
+        "correctOptionKey": "1",
+        "options": {"1": "Brazil", "2": "Spain", "3": "Mexico", "4": "Argentina"},
+        "questionText": "Carnival is most famously celebrated in which country?"
+      },
+      "1": {
+        "correctOptionKey": "4",
+        "options": {"1": "China", "2": "Thailand", "3": "India", "4": "Japan"},
+        "questionText": "Which country is known for the tradition of cherry blossom festivals?"
       },
       "2": {
+        "correctOptionKey": "2",
+        "options": {"1": "Germany", "2": "Oktoberfest", "3": "Italy", "4": "Spain"},
+        "questionText": "Where is the Oktoberfest held?"
+      },
+      "3": {
+        "correctOptionKey": "3",
+        "options": {"1": "India", "2": "Pakistan", "3": "Nepal", "4": "Bhutan"},
+        "questionText": "Where is the festival of Holi primarily celebrated?"
+      },
+      "4": {
+        "correctOptionKey": "1",
+        "options": {"1": "Mexico", "2": "Canada", "3": "USA", "4": "Brazil"},
+        "questionText": "Where is the Day of the Dead festival celebrated?"
+      },
+      "5": {
+        "correctOptionKey": "2",
+        "options": {"1": "Spain", "2": "Thailand", "3": "Japan", "4": "China"},
+        "questionText": "Where is the Songkran Water Festival celebrated?"
+      },
+      "6": {
+        "correctOptionKey": "3",
+        "options": {"1": "USA", "2": "UK", "3": "Ireland", "4": "Scotland"},
+        "questionText": "Where is St. Patrick's Day traditionally celebrated?"
+      },
+      "7": {
+        "correctOptionKey": "1",
+        "options": {"1": "China", "2": "Japan", "3": "Vietnam", "4": "Thailand"},
+        "questionText": "Where is the Lunar New Year most celebrated?"
+      },
+      "8": {
         "correctOptionKey": "4",
-        "options": {
-          "1": "Mount Kilimanjaro",
-          "2": "Mount McKinley",
-          "3": "Mount Elbrus",
-          "4": "Mount Everest"
-        },
-        "questionText": "Which mountain is the highest peak in the world?"
+        "options": {"1": "Spain", "2": "Italy", "3": "Portugal", "4": "Greece"},
+        "questionText": "Where is the festival of Santorini's blue domes celebrated?"
+      },
+      "9": {
+        "correctOptionKey": "2",
+        "options": {"1": "India", "2": "Morocco", "3": "Egypt", "4": "Turkey"},
+        "questionText": "Where is the festival of Marrakech celebrated?"
+      }
+    }
+  },
+
+  "Mountains & Lakes": {
+    "title": "Mountains & Lakes",
+    "image_url": "https://img.freepik.com/free-vector/mountains-landscape-illustration_23-2148260128.jpg",
+    "questions": {
+      "0": {
+        "correctOptionKey": "4",
+        "options": {"1": "K2", "2": "Kangchenjunga", "3": "Lhotse", "4": "Mount Everest"},
+        "questionText": "What is the highest mountain in the world?"
+      },
+      "1": {
+        "correctOptionKey": "2",
+        "options": {"1": "Lake Victoria", "2": "Caspian Sea", "3": "Lake Baikal", "4": "Lake Superior"},
+        "questionText": "Which is the largest lake in the world by surface area?"
+      },
+      "2": {
+        "correctOptionKey": "3",
+        "options": {"1": "Kilimanjaro", "2": "Everest", "3": "Mont Blanc", "4": "Elbrus"},
+        "questionText": "Which mountain is the highest in Europe?"
+      },
+      "3": {
+        "correctOptionKey": "1",
+        "options": {"1": "Denali", "2": "Mount Logan", "3": "Mont Blanc", "4": "K2"},
+        "questionText": "Which mountain is the highest peak in North America?"
+      },
+      "4": {
+        "correctOptionKey": "4",
+        "options": {"1": "Lake Michigan", "2": "Lake Huron", "3": "Lake Erie", "4": "Lake Superior"},
+        "questionText": "Which is the largest freshwater lake in North America?"
+      },
+      "5": {
+        "correctOptionKey": "2",
+        "options": {"1": "Victoria", "2": "Tanganyika", "3": "Baikal", "4": "Great Slave Lake"},
+        "questionText": "Which African lake is the second largest by volume?"
+      },
+      "6": {
+        "correctOptionKey": "3",
+        "options": {"1": "Mount Kosciuszko", "2": "Mount Fuji", "3": "Aconcagua", "4": "Mount Elbrus"},
+        "questionText": "Which mountain is the highest in South America?"
+      },
+      "7": {
+        "correctOptionKey": "1",
+        "options": {"1": "Lake Baikal", "2": "Lake Superior", "3": "Lake Tanganyika", "4": "Caspian Sea"},
+        "questionText": "Which is the deepest lake in the world?"
+      },
+      "8": {
+        "correctOptionKey": "4",
+        "options": {"1": "Matterhorn", "2": "Alps", "3": "Rockies", "4": "Everest"},
+        "questionText": "Which mountain belongs to the Himalayas?"
+      },
+      "9": {
+        "correctOptionKey": "2",
+        "options": {"1": "Loch Ness", "2": "Lake Titicaca", "3": "Lake Geneva", "4": "Lake Ontario"},
+        "questionText": "Which is the highest navigable lake in the world?"
       }
     }
   }
 };
+
+
+
+

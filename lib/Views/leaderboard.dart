@@ -66,21 +66,21 @@ class Leaderboard extends StatelessWidget {
                     // currently we have only one user, we will add more user later
                     if (topThree.isNotEmpty) // or topthree.lenth >=1
                       Positioned(
-                        top: 175,
+                        top: 120,
                         right: 50,
                         left: 50,
                         child: _buildTopUser(topThree[0], 1, context),
                       ),
                     if (topThree.length >= 2)
                       Positioned(
-                        top: 240,
-                        left: 25,
+                        top: 180,
+                        left: 50,
                         child: _buildTopUser(topThree[1], 2, context),
                       ),
                     if (topThree.length >= 3)
                       Positioned(
-                        top: 265,
-                        right: 30,
+                        top: 210,
+                        right: 50,
                         child: _buildTopUser(topThree[2], 3, context),
                       ),
                   ],

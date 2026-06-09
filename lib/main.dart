@@ -4,12 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_quiz_app/Views/login_screen.dart';
 import 'package:flutter_firebase_quiz_app/Views/nav_bar_category_selection_screen.dart';
 import 'package:flutter_firebase_quiz_app/firebase_options.dart';
+import 'Data/existing_data.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+
+
+  // Upload questions to Firebase before running the app
+  await uploadQuestionsToFirebase();
+
   runApp(const QuizApp());
 }
 
@@ -20,7 +29,6 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // for keep user login until logout
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
