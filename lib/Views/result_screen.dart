@@ -24,15 +24,14 @@ class _ResultScreenState extends State<ResultScreen> {
   @override
   void initState() {
     super.initState();
-    // Play a clapping/celebration sound from web when results screen loads
+
     AudioService.playCelebration();
   }
 
   @override
   Widget build(BuildContext context) {
     double percentage = (widget.score / widget.totalQuestion) * 100;
-    
-    // Dynamic Encouragement Messages
+
     String statusTitle;
     String statusSubtitle;
     Color statusColor;
@@ -76,7 +75,7 @@ class _ResultScreenState extends State<ResultScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                // Celebration Lottie Stack
+
                 Stack(
                   alignment: Alignment.center,
                   children: [
@@ -96,7 +95,6 @@ class _ResultScreenState extends State<ResultScreen> {
                 ).animate().scale(duration: 400.ms, curve: Curves.bounceOut),
                 const SizedBox(height: 20),
 
-                // Feedback Message
                 Text(
                   statusTitle,
                   style: TextStyle(
@@ -116,7 +114,6 @@ class _ResultScreenState extends State<ResultScreen> {
                 ).animate().fadeIn(delay: 300.ms, duration: 300.ms).slideY(begin: 0.2, end: 0),
                 const SizedBox(height: 40),
 
-                // Glassmorphic Score Card
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
                   decoration: BoxDecoration(
@@ -130,7 +127,7 @@ class _ResultScreenState extends State<ResultScreen> {
                   ),
                   child: Column(
                     children: [
-                      // Radial animated percentage ring
+
                       TweenAnimationBuilder<double>(
                         duration: 1500.ms,
                         curve: Curves.fastOutSlowIn,
@@ -163,7 +160,6 @@ class _ResultScreenState extends State<ResultScreen> {
                       ),
                       const SizedBox(height: 24),
 
-                      // Score Counter Label
                       Text(
                         "${widget.score} / ${widget.totalQuestion} Correct",
                         style: const TextStyle(
@@ -178,7 +174,6 @@ class _ResultScreenState extends State<ResultScreen> {
                 .animate().fadeIn(delay: 400.ms, duration: 500.ms).scale(begin: const Offset(0.95, 0.95)),
                 const SizedBox(height: 40),
 
-                // Bottom Action buttons
                 Row(
                   children: [
                     Expanded(
@@ -205,14 +200,14 @@ class _ResultScreenState extends State<ResultScreen> {
                             MaterialPageRoute(
                               builder: (context) =>
                                   const NavBarCategorySelectionScreen(
-                                initialIndex: 1, // Redirects straight to Leaderboard tab
+                                initialIndex: 1,
                               ),
                             ),
                             (route) => false,
                           );
                         },
                         buttontext: "Leaderboard",
-                        gradient: AppTheme.accentGradient, // Pink/Violet Gradient
+                        gradient: AppTheme.accentGradient,
                       ),
                     ),
                   ],

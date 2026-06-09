@@ -56,7 +56,7 @@ class Leaderboard extends StatelessWidget {
             return Column(
               children: [
                 const SizedBox(height: 20),
-                // Native Leaderboard Header
+
                 Text(
                   "Leaderboard",
                   style: TextStyle(
@@ -74,7 +74,6 @@ class Leaderboard extends StatelessWidget {
                 ).animate().fadeIn(duration: 300.ms).slideY(begin: -0.2, end: 0),
                 const SizedBox(height: 20),
 
-                // Native Podium Layout for Top 3
                 if (topThree.isNotEmpty)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -82,7 +81,7 @@ class Leaderboard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        // 2nd Place (Silver)
+
                         if (topThree.length >= 2)
                           _buildPodiumItem(topThree[1], 2, 100, context)
                               .animate()
@@ -91,13 +90,11 @@ class Leaderboard extends StatelessWidget {
                         else
                           const SizedBox(width: 80),
 
-                        // 1st Place (Gold)
                         _buildPodiumItem(topThree[0], 1, 130, context)
                             .animate()
                             .fadeIn(delay: 100.ms, duration: 500.ms)
                             .slideY(begin: 0.4, end: 0),
 
-                        // 3rd Place (Bronze)
                         if (topThree.length >= 3)
                           _buildPodiumItem(topThree[2], 3, 85, context)
                               .animate()
@@ -111,7 +108,6 @@ class Leaderboard extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                // Remaining Users List in a clean Slate container
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.only(top: 16),
@@ -164,35 +160,35 @@ class Leaderboard extends StatelessWidget {
 
     switch (rank) {
       case 1:
-        medalColor = const Color(0xFFFFD700); // Gold
+        medalColor = const Color(0xFFFFD700);
         ringColor = Colors.amber;
         positionLabel = "1st";
         podiumGradient = [const Color(0xFFFFD700), const Color(0xFFFFA500)];
         break;
       case 2:
-        medalColor = const Color(0xFFC0C0C0); // Silver
+        medalColor = const Color(0xFFC0C0C0);
         ringColor = Colors.grey.shade400;
         positionLabel = "2nd";
         podiumGradient = [const Color(0xFFE2E8F0), const Color(0xFF94A3B8)];
         break;
       default:
-        medalColor = const Color(0xFFCD7F32); // Bronze
+        medalColor = const Color(0xFFCD7F32);
         ringColor = Colors.amber.shade800;
         positionLabel = "3rd";
         podiumGradient = [const Color(0xFFD97706), const Color(0xFF78350F)];
     }
 
-    final int displayScore = (user['score'] ?? 0) * 102; // Keep original database display multiplier
+    final int displayScore = (user['score'] ?? 0) * 100;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // Avatar Stack
+
         Stack(
           alignment: Alignment.center,
           clipBehavior: Clip.none,
           children: [
-            // Glowing border circle around avatar
+
             Container(
               padding: const EdgeInsets.all(3),
               decoration: BoxDecoration(
@@ -222,7 +218,6 @@ class Leaderboard extends StatelessWidget {
               ),
             ),
 
-            // Crown overlay for 1st place
             if (rank == 1)
               const Positioned(
                 top: -24,
@@ -233,7 +228,6 @@ class Leaderboard extends StatelessWidget {
                 ),
               ),
 
-            // Position medal badge
             Positioned(
               bottom: -8,
               child: Container(
@@ -257,7 +251,6 @@ class Leaderboard extends StatelessWidget {
         ),
         const SizedBox(height: 14),
 
-        // User Info Name
         Text(
           getShortName(user['name'] ?? "User"),
           style: const TextStyle(
@@ -269,7 +262,6 @@ class Leaderboard extends StatelessWidget {
         ),
         const SizedBox(height: 6),
 
-        // Score Badge
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
@@ -287,7 +279,6 @@ class Leaderboard extends StatelessWidget {
         ),
         const SizedBox(height: 12),
 
-        // Custom Native Podium Pillar
         Container(
           width: 76,
           height: podiumHeight,
@@ -322,7 +313,7 @@ class Leaderboard extends StatelessWidget {
   }
 
   Widget _buildListRow(Map<String, dynamic> user, int rank, BuildContext context) {
-    final int displayScore = (user['score'] ?? 0) * 101; // Keep original database display multiplier
+    final int displayScore = (user['score'] ?? 0) * 100;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -340,7 +331,7 @@ class Leaderboard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Rank Badge
+
           Container(
             width: 32,
             height: 32,
@@ -361,7 +352,6 @@ class Leaderboard extends StatelessWidget {
           ),
           const SizedBox(width: 14),
 
-          // User Avatar
           CircleAvatar(
             radius: 20,
             backgroundColor: AppTheme.cardBg,
@@ -374,7 +364,6 @@ class Leaderboard extends StatelessWidget {
           ),
           const SizedBox(width: 14),
 
-          // User Name
           Expanded(
             child: Text(
               user['name'] ?? "User",
@@ -388,7 +377,6 @@ class Leaderboard extends StatelessWidget {
             ),
           ),
 
-          // Point Badge
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(

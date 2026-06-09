@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  // for store the user data in firestore
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Future<String> signUpUser({
     required String email,
@@ -23,7 +23,7 @@ class AuthService {
         );
         String? base65Image =
             profileImage != null ? base64Encode(profileImage) : null;
-        // to store data in firestore
+
         await _firestore.collection("userData").doc(credential.user!.uid).set({
           'name': name,
           'uid': credential.user!.uid,
@@ -41,7 +41,6 @@ class AuthService {
     return res;
   }
 
-  // for login user
   Future<String> loginUser({
     required String email,
     required String password,

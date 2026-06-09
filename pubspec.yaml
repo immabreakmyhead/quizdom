@@ -40,30 +40,12 @@ flutter_native_splash:
   android: true
   ios: true
 
-#  color: "#0F172A"
   image: "assets/quizdom_foreground.png"
   background_image: "assets/background.png"
-#  adaptive_icon_background: "#0F172A"
-#  adaptive_icon_foreground: "assets/quizdom_foreground.png"
 
-#  isws etsi douleuei to native splash
   android_12:
     color: "#0F172A"
     image: "assets/quizdom_foreground.png"
-#    background_image: "assets/background.png"
-    #  adaptive_icon_background: "#0000FF"
-    #  adaptive_icon_foreground: "assets/quizdom.png"
-
-
-
-
-
-
-
-
-
-
-
 
 flutter:
   uses-material-design: true

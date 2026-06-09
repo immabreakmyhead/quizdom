@@ -139,7 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           const SizedBox(height: 30),
-                          // Premium Profile Title
+
                           Text(
                             "My Profile",
                             style: TextStyle(
@@ -157,7 +157,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ).animate().fadeIn(duration: 300.ms).slideY(begin: -0.2, end: 0),
                           const SizedBox(height: 30),
 
-                          // Profile Picture with glowing ring
                           GestureDetector(
                             onTap: pickImageFromGallery,
                             child: Stack(
@@ -204,7 +203,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ).animate().fadeIn(delay: 100.ms, duration: 400.ms).scale(begin: const Offset(0.9, 0.9)),
                           const SizedBox(height: 20),
 
-                          // User Name
                           Text(
                             userData?['name'] ?? "User",
                             style: const TextStyle(
@@ -215,14 +213,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ).animate().fadeIn(delay: 200.ms, duration: 300.ms),
                           const SizedBox(height: 30),
 
-                          // Stats Cards Grid
                           _buildStatsGrid()
                               .animate()
                               .fadeIn(delay: 300.ms, duration: 450.ms)
                               .slideY(begin: 0.1, end: 0),
                           const SizedBox(height: 24),
 
-                          // Details Info Card
                           Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
@@ -266,14 +262,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ).animate().fadeIn(delay: 400.ms, duration: 400.ms).slideY(begin: 0.1, end: 0),
                           const SizedBox(height: 40),
 
-                          // Sign Out Button
                           SizedBox(
                             width: double.infinity,
                             height: 52,
                             child: MyButton(
                               onTap: signOut,
                               buttontext: "Sign Out",
-                              gradient: AppTheme.incorrectGradient, // Red Gradient
+                              gradient: AppTheme.incorrectGradient,
                             ),
                           ).animate().fadeIn(delay: 500.ms, duration: 400.ms).scale(begin: const Offset(0.95, 0.95)),
                         ],
@@ -286,7 +281,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildStatsGrid() {
     final int rawScore = userData?['score'] ?? 0;
-    final int displayScore = rawScore * 102; // Keep original display multiplier consistency
+    final int displayScore = rawScore * 100;
     final int level = (rawScore / 5).floor() + 1;
     final String rank = rawScore > 50
         ? "Grandmaster"

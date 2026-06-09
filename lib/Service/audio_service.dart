@@ -6,7 +6,6 @@ class AudioService {
   static final AudioPlayer _incorrectPlayer = AudioPlayer();
   static final AudioPlayer _celebrationPlayer = AudioPlayer();
 
-  // Local asset paths (audioplayers automatically defaults its search directory to 'assets/')
   static const String _correctPath = "correct.mp3";
   static const String _incorrectPath = "wrong.mp3";
   static const String _celebrationPath = "clapping.mp3";
@@ -38,7 +37,6 @@ class AudioService {
     }
   }
 
-  // Dispose players to release system resources when app closes
   static void dispose() {
     _correctPlayer.dispose();
     _incorrectPlayer.dispose();

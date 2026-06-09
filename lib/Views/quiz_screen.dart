@@ -85,8 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
         score++;
       }
     });
-    
-    // Play correct/incorrect sound effects
+
     if (isCorrect) {
       AudioService.playCorrect();
     } else {
@@ -172,7 +171,7 @@ class _QuizScreenState extends State<QuizScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             child: Column(
               children: [
-                // Animate Progress Bar using TweenAnimationBuilder for smooth glide
+
                 TweenAnimationBuilder<double>(
                   duration: 400.ms,
                   curve: Curves.easeInOut,
@@ -203,7 +202,6 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
                 const SizedBox(height: 30),
 
-                // Question Card (Glassmorphic Container)
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(24),
@@ -232,7 +230,6 @@ class _QuizScreenState extends State<QuizScreen> {
                 .scale(begin: const Offset(0.95, 0.95)),
                 const SizedBox(height: 30),
 
-                // Options List
                 Expanded(
                   child: ListView.separated(
                     itemCount: question[currentIndex]['options'].length,
@@ -243,7 +240,6 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                 ),
 
-                // Animated Next/Finish Button
                 if (hasAnswered)
                   SizedBox(
                     width: double.infinity,
@@ -271,7 +267,6 @@ class _QuizScreenState extends State<QuizScreen> {
     bool isCorrect = question[currentIndex]['correctOptionKey'] == index + 1;
     bool isSelected = selectedOption == index;
 
-    // Determine colors based on states
     Gradient? optionGradient;
     Color borderCol = Colors.white.withOpacity(0.08);
 
@@ -347,13 +342,12 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
     );
 
-    // Dynamic animation based on choice accuracy
     if (hasAnswered && isSelected) {
       optionCard = optionCard
           .animate()
           .scale(begin: const Offset(0.97, 0.97), duration: 200.ms, curve: Curves.elasticOut);
       if (!isCorrect) {
-        // Shake animation for incorrect answer
+
         optionCard = optionCard.animate().shake(hz: 8, duration: 350.ms, offset: const Offset(4, 0));
       }
     }

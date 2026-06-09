@@ -15,7 +15,6 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Upload questions to Firebase before running the app
   await uploadQuestionsToFirebase();
 
   runApp(const QuizApp());
@@ -38,8 +37,7 @@ class QuizApp extends StatelessWidget {
               return const LoginScreen();
             }
           }
-          
-          // Premium Startup Loading Screen
+
           return Scaffold(
             body: Container(
               width: double.infinity,

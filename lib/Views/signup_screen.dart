@@ -37,7 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
       email: emailController.text.trim(),
       password: passwordController.text.trim(),
       name: nameController.text.trim(),
-      profileImage: null, // User can upload image in profile later
+      profileImage: null,
     );
 
     if (!mounted) return;
@@ -76,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 20),
-                // Premium Animated Logo / Image
+
                 Container(
                   height: 180,
                   decoration: BoxDecoration(
@@ -99,7 +99,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 ).animate().fadeIn(duration: 600.ms).scale(begin: const Offset(0.8, 0.8)),
                 const SizedBox(height: 30),
 
-                // Welcome / Info Text
                 Text(
                   "Create Account",
                   style: TextStyle(
@@ -125,7 +124,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 ).animate().fadeIn(delay: 200.ms, duration: 400.ms).slideY(begin: 0.2, end: 0),
                 const SizedBox(height: 30),
 
-                // Glassmorphic Signup Form Card
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
@@ -139,7 +137,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   child: Column(
                     children: [
-                      // Name Field
+
                       TextField(
                         controller: nameController,
                         style: const TextStyle(color: AppTheme.textLight),
@@ -150,7 +148,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       ).animate().fadeIn(delay: 300.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
                       const SizedBox(height: 20),
 
-                      // Email Field
                       TextField(
                         controller: emailController,
                         style: const TextStyle(color: AppTheme.textLight),
@@ -162,7 +159,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       ).animate().fadeIn(delay: 400.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
                       const SizedBox(height: 20),
 
-                      // Password Field
                       TextField(
                         controller: passwordController,
                         style: const TextStyle(color: AppTheme.textLight),
@@ -187,7 +183,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       ).animate().fadeIn(delay: 500.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
                       const SizedBox(height: 30),
 
-                      // Signup Button
                       isLoading
                           ? const Center(
                               child: CircularProgressIndicator(
@@ -213,7 +208,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 ).animate().fadeIn(delay: 250.ms, duration: 500.ms).slideY(begin: 0.1, end: 0),
                 const SizedBox(height: 40),
 
-                // Redirect to Login
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

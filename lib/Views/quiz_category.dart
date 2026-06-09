@@ -31,7 +31,7 @@ class _QuizCategoryState extends State<QuizCategory> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              // Beautiful Header Title
+
               Text(
                 "Choose Category",
                 style: TextStyle(
@@ -56,8 +56,7 @@ class _QuizCategoryState extends State<QuizCategory> {
                 ),
               ).animate().fadeIn(delay: 100.ms, duration: 400.ms).slideY(begin: -0.2, end: 0),
               const SizedBox(height: 24),
-              
-              // Categories Grid
+
               Expanded(
                 child: StreamBuilder(
                   stream: myCollection.snapshots(),
@@ -83,32 +82,32 @@ class _QuizCategoryState extends State<QuizCategory> {
 
                     final List<LinearGradient> cardGradients = [
                       const LinearGradient(
-                        colors: [Color(0xFF3B82F6), Color(0xFF1D4ED8)], // Blue
+                        colors: [Color(0xFF3B82F6), Color(0xFF1D4ED8)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       const LinearGradient(
-                        colors: [Color(0xFF8B5CF6), Color(0xFF6D28D9)], // Purple
+                        colors: [Color(0xFF8B5CF6), Color(0xFF6D28D9)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       const LinearGradient(
-                        colors: [Color(0xFFEF4444), Color(0xFFB91C1C)], // Red
+                        colors: [Color(0xFFEF4444), Color(0xFFB91C1C)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       const LinearGradient(
-                        colors: [Color(0xFFF59E0B), Color(0xFFD97706)], // Orange
+                        colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       const LinearGradient(
-                        colors: [Color(0xFF10B981), Color(0xFF047857)], // Emerald Green
+                        colors: [Color(0xFF10B981), Color(0xFF047857)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
                       const LinearGradient(
-                        colors: [Color(0xFFEC4899), Color(0xFFBE185D)], // Pink
+                        colors: [Color(0xFFEC4899), Color(0xFFBE185D)],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),
@@ -152,7 +151,7 @@ class _QuizCategoryState extends State<QuizCategory> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: [
-                                      // Top Image
+
                                       Expanded(
                                         child: ShaderMask(
                                           shaderCallback: (rect) {
@@ -177,8 +176,7 @@ class _QuizCategoryState extends State<QuizCategory> {
                                           ),
                                         ),
                                       ),
-                                      
-                                      // Bottom Title Label
+
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(12, 4, 12, 16),
                                         child: Text(

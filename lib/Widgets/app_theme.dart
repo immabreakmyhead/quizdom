@@ -1,52 +1,50 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Brand Palette
-  static const Color background = Color(0xFF0F172A); // Slate 900
-  static const Color surface = Color(0xFF1E293B);    // Slate 800
-  static const Color cardBg = Color(0xFF334155);     // Slate 700
-  
-  static const Color primary = Color(0xFF6366F1);    // Indigo 500
-  static const Color secondary = Color(0xFF06B6D4);  // Cyan 500
-  static const Color accent = Color(0xFFEC4899);     // Pink 500
-  
-  static const Color correct = Color(0xFF10B981);    // Emerald 500
-  static const Color incorrect = Color(0xFFEF4444);  // Red 500
-  static const Color textLight = Color(0xFFF8FAFC);  // Slate 50
-  static const Color textMuted = Color(0xFF94A3B8);  // Slate 400
 
-  // Premium Gradients
+  static const Color background = Color(0xFF0F172A);
+  static const Color surface = Color(0xFF1E293B);
+  static const Color cardBg = Color(0xFF334155);
+
+  static const Color primary = Color(0xFF6366F1);
+  static const Color secondary = Color(0xFF06B6D4);
+  static const Color accent = Color(0xFFEC4899);
+
+  static const Color correct = Color(0xFF10B981);
+  static const Color incorrect = Color(0xFFEF4444);
+  static const Color textLight = Color(0xFFF8FAFC);
+  static const Color textMuted = Color(0xFF94A3B8);
+
   static const LinearGradient backgroundGradient = LinearGradient(
-    colors: [Color(0xFF0F172A), Color(0xFF1E1B4B)], // Slate 900 to Deep Indigo
+    colors: [Color(0xFF0F172A), Color(0xFF1E1B4B)],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
 
   static const LinearGradient primaryGradient = LinearGradient(
-    colors: [Color(0xFF6366F1), Color(0xFF06B6D4)], // Indigo to Cyan
+    colors: [Color(0xFF6366F1), Color(0xFF06B6D4)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   static const LinearGradient accentGradient = LinearGradient(
-    colors: [Color(0xFFEC4899), Color(0xFF8B5CF6)], // Pink to Violet
+    colors: [Color(0xFFEC4899), Color(0xFF8B5CF6)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   static const LinearGradient correctGradient = LinearGradient(
-    colors: [Color(0xFF34D399), Color(0xFF059669)], // Emerald Light to Dark
+    colors: [Color(0xFF34D399), Color(0xFF059669)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
   static const LinearGradient incorrectGradient = LinearGradient(
-    colors: [Color(0xFFF87171), Color(0xFFDC2626)], // Red Light to Dark
+    colors: [Color(0xFFF87171), Color(0xFFDC2626)],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
 
-  // Modern Box Shadows
   static List<BoxShadow> get premiumShadow => [
         BoxShadow(
           color: Colors.black.withOpacity(0.3),
@@ -63,7 +61,6 @@ class AppTheme {
         ),
       ];
 
-  // Custom Input Decoration
   static InputDecoration inputDecoration({
     required String labelText,
     required IconData prefixIcon,
