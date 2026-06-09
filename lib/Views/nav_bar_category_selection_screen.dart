@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_quiz_app/Views/leaderboard.dart';
 import 'package:flutter_firebase_quiz_app/Views/profile_screen.dart';
 import 'package:flutter_firebase_quiz_app/Views/quiz_category.dart';
+import 'package:flutter_firebase_quiz_app/Widgets/app_theme.dart';
 
 class NavBarCategorySelectionScreen extends StatefulWidget {
   final int initialIndex;
@@ -17,10 +18,11 @@ class _NavBarCategorySelectionScreenState
   final PageStorageBucket bucket = PageStorageBucket();
   final pages = [
     const QuizCategory(),
-   const Leaderboard(),
-   const ProfileScreen()
+    const Leaderboard(),
+    const ProfileScreen()
   ];
   late int selectedIndex;
+
   @override
   void initState() {
     selectedIndex = widget.initialIndex;
@@ -30,46 +32,64 @@ class _NavBarCategorySelectionScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.background,
       body: PageStorage(
         bucket: bucket,
         child: pages[selectedIndex],
       ),
-      backgroundColor: Colors.white,
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        currentIndex: selectedIndex,
-        onTap: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        selectedItemColor: Colors.blueAccent,
-        unselectedItemColor: Colors.grey,
-        // Added horizontal padding around icons to increase spacing between them
-        items: const [
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Icon(Icons.category),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.white.withOpacity(0.05),
+              width: 1.5,
             ),
-            label: "Categories",
           ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Icon(Icons.leaderboard),
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: AppTheme.surface,
+          currentIndex: selectedIndex,
+          onTap: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          selectedItemColor: AppTheme.secondary,
+          unselectedItemColor: AppTheme.textMuted,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 12,
+          ),
+          unselectedLabelStyle: const TextStyle(
+            fontSize: 12,
+          ),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: Icon(Icons.grid_view_rounded),
+              ),
+              label: "Categories",
             ),
-            label: "Leaderboard",
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              child: Icon(Icons.person),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: Icon(Icons.leaderboard_rounded),
+              ),
+              label: "Leaderboard",
             ),
-            label: "Profile",
-          ),
-        ],
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.0),
+                child: Icon(Icons.person_rounded),
+              ),
+              label: "Profile",
+            ),
+          ],
+        ),
       ),
     );
   }

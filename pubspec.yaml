@@ -19,6 +19,8 @@ dependencies:
   shared_preferences: ^2.5.1
   path_provider: ^2.1.5
   lottie: ^3.2.0
+  flutter_animate: ^4.5.0
+  audioplayers: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -31,23 +33,23 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/quizdom.png"
-  adaptive_icon_background: "#0000FF"
-  adaptive_icon_foreground: "assets/quizdom.png"
+  adaptive_icon_background: "#0F172A"
+  adaptive_icon_foreground: "assets/quizdom_foreground.png"
 
 flutter_native_splash:
   android: true
   ios: true
 
-#  color: "#0000FF"
-  image: "assets/quizdom.png"
+#  color: "#0F172A"
+  image: "assets/quizdom_foreground.png"
   background_image: "assets/background.png"
-#  adaptive_icon_background: "#0000FF"
-#  adaptive_icon_foreground: "assets/quizdom.png"
+#  adaptive_icon_background: "#0F172A"
+#  adaptive_icon_foreground: "assets/quizdom_foreground.png"
 
 #  isws etsi douleuei to native splash
-  android 12:
-    color: "#0000FF"
-    image: "assets/quizdom.png"
+  android_12:
+    color: "#0F172A"
+    image: "assets/quizdom_foreground.png"
 #    background_image: "assets/background.png"
     #  adaptive_icon_background: "#0000FF"
     #  adaptive_icon_foreground: "assets/quizdom.png"

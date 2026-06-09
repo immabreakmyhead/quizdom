@@ -1,12 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
-
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_firebase_quiz_app/Service/auth_service.dart';
 import 'package:flutter_firebase_quiz_app/Views/login_screen.dart';
 import 'package:flutter_firebase_quiz_app/Widgets/my_button.dart';
 import 'package:flutter_firebase_quiz_app/Widgets/snackbar.dart';
+import 'package:flutter_firebase_quiz_app/Widgets/app_theme.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -16,32 +14,39 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   bool isLoading = false;
   bool isPasswordHidden = true;
   final AuthService _authService = AuthService();
 
-  // signup function to handle user registration
   void _signUp() async {
+    if (nameController.text.trim().isEmpty ||
+        emailController.text.trim().isEmpty ||
+        passwordController.text.trim().isEmpty) {
+      showSnackBAR(context, "Please fill in all fields");
+      return;
+    }
+
     setState(() {
       isLoading = true;
     });
-    Uint8List? profileImageBytes; // suuume this comes from image picker and initially it is null user can update it profiel 
-    // call the method
+
     final result = await _authService.signUpUser(
-      email: emailController.text,
-      password: passwordController.text,
-      name: nameController.text,
-      profileImage: profileImageBytes,
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+      name: nameController.text.trim(),
+      profileImage: null, // User can upload image in profile later
     );
+
+    if (!mounted) return;
+
     if (result == "success") {
       setState(() {
         isLoading = false;
       });
-      // navigate to the next screen with essage
-      showSnackBAR(context, "Signup Successful! Now Turn to Login");
+      showSnackBAR(context, "Signup Successful! Please login.");
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const LoginScreen(),
@@ -51,100 +56,196 @@ class _SignupScreenState extends State<SignupScreen> {
       setState(() {
         isLoading = false;
       });
-      showSnackBAR(context, "Signup Failed $result");
+      showSnackBAR(context, "Signup Failed: $result");
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            children: [
-              Image.asset("assets/usersignin.png"),
-              const SizedBox(height: 20),
-              // inpute field for name,
-              TextField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: "Name",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 20),
-              // inpute field for email,
-              TextField(
-                controller: emailController,
-                decoration: const InputDecoration(
-                  labelText: "Email",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 20),
-              // inpute field for password
-              TextField(
-                controller: passwordController,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        isPasswordHidden = !isPasswordHidden;
-                      });
-                    },
-                    icon: Icon(
-                      isPasswordHidden
-                          ? Icons.visibility_off
-                          : Icons.visibility,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: AppTheme.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 20),
+                // Premium Animated Logo / Image
+                Container(
+                  height: 180,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.05),
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppTheme.primary.withOpacity(0.15),
+                        blurRadius: 30,
+                        spreadRadius: 10,
+                      )
+                    ],
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      "assets/usersignin.png",
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                obscureText: isPasswordHidden,
-              ),
-              const SizedBox(height: 20),
-              // for signup button
-              isLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : SizedBox(
-                      width: double.infinity,
-                      child: MyButton(onTap: _signUp, buttontext: "Signup"),
-                    ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    "Alreay have an account? ",
-                    style: TextStyle(fontSize: 18),
+                ).animate().fadeIn(duration: 600.ms).scale(begin: const Offset(0.8, 0.8)),
+                const SizedBox(height: 30),
+
+                // Welcome / Info Text
+                Text(
+                  "Create Account",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: AppTheme.textLight,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
+                      )
+                    ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
+                ).animate().fadeIn(delay: 100.ms, duration: 400.ms).slideY(begin: 0.2, end: 0),
+                const SizedBox(height: 8),
+                const Text(
+                  "Join the quiz community today",
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: AppTheme.textMuted,
+                  ),
+                ).animate().fadeIn(delay: 200.ms, duration: 400.ms).slideY(begin: 0.2, end: 0),
+                const SizedBox(height: 30),
+
+                // Glassmorphic Signup Form Card
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: AppTheme.surface.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(
+                      color: Colors.white.withOpacity(0.08),
+                      width: 1,
+                    ),
+                    boxShadow: AppTheme.premiumShadow,
+                  ),
+                  child: Column(
+                    children: [
+                      // Name Field
+                      TextField(
+                        controller: nameController,
+                        style: const TextStyle(color: AppTheme.textLight),
+                        decoration: AppTheme.inputDecoration(
+                          labelText: "Full Name",
+                          prefixIcon: Icons.person_rounded,
                         ),
-                      );
-                    },
-                    child: const Text(
-                      "Login here",
+                      ).animate().fadeIn(delay: 300.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
+                      const SizedBox(height: 20),
+
+                      // Email Field
+                      TextField(
+                        controller: emailController,
+                        style: const TextStyle(color: AppTheme.textLight),
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: AppTheme.inputDecoration(
+                          labelText: "Email Address",
+                          prefixIcon: Icons.email_rounded,
+                        ),
+                      ).animate().fadeIn(delay: 400.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
+                      const SizedBox(height: 20),
+
+                      // Password Field
+                      TextField(
+                        controller: passwordController,
+                        style: const TextStyle(color: AppTheme.textLight),
+                        obscureText: isPasswordHidden,
+                        decoration: AppTheme.inputDecoration(
+                          labelText: "Password",
+                          prefixIcon: Icons.lock_rounded,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                isPasswordHidden = !isPasswordHidden;
+                              });
+                            },
+                            icon: Icon(
+                              isPasswordHidden
+                                  ? Icons.visibility_off_rounded
+                                  : Icons.visibility_rounded,
+                              color: AppTheme.textMuted,
+                            ),
+                          ),
+                        ),
+                      ).animate().fadeIn(delay: 500.ms, duration: 400.ms).slideX(begin: -0.1, end: 0),
+                      const SizedBox(height: 30),
+
+                      // Signup Button
+                      isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: AppTheme.primary,
+                              ),
+                            )
+                          : Container(
+                              width: double.infinity,
+                              height: 52,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(14),
+                                gradient: AppTheme.primaryGradient,
+                                boxShadow: AppTheme.glowingPrimaryShadow,
+                              ),
+                              child: MyButton(
+                                onTap: _signUp,
+                                buttontext: "Signup",
+                                color: Colors.transparent,
+                              ),
+                            ).animate().fadeIn(delay: 600.ms, duration: 400.ms).scale(begin: const Offset(0.95, 0.95)),
+                    ],
+                  ),
+                ).animate().fadeIn(delay: 250.ms, duration: 500.ms).slideY(begin: 0.1, end: 0),
+                const SizedBox(height: 40),
+
+                // Redirect to Login
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Already have an account? ",
                       style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                        letterSpacing: -1,
+                        fontSize: 16,
+                        color: AppTheme.textMuted,
                       ),
                     ),
-                  )
-                ],
-              ),
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
+                      child: const Text(
+                        "Login here",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: AppTheme.secondary,
+                        ),
+                      ),
+                    )
+                  ],
+                ).animate().fadeIn(delay: 700.ms, duration: 400.ms),
+              ],
+            ),
           ),
         ),
       ),
